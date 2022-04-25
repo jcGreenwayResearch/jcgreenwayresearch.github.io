@@ -14,7 +14,7 @@ function init() {
     renderer.setPixelRatio(window.devicePixelRatio);
     // 设置渲染物体阴影
     renderer.shadowMap.enabled = true;
-    renderer.shadowMapType = THREE.PCFSoftShadowMap; // options are THREE.BasicShadowMap | THREE.PCFShadowMap | THREE.PCFSoftShadowMap
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap; // options are THREE.BasicShadowMap | THREE.PCFShadowMap | THREE.PCFSoftShadowMap
 
 
 //     // 显示三维坐标系
