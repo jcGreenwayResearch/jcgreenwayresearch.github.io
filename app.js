@@ -17,10 +17,10 @@ function init() {
     renderer.shadowMapType = THREE.PCFSoftShadowMap; // options are THREE.BasicShadowMap | THREE.PCFShadowMap | THREE.PCFSoftShadowMap
 
 
-    // 显示三维坐标系
-    let axes = new THREE.AxesHelper(20);
-    // 添加坐标系到场景中
-    scene.add(axes);
+//     // 显示三维坐标系
+//     let axes = new THREE.AxesHelper(20);
+//     // 添加坐标系到场景中
+//     scene.add(axes);
 
     // 导入树干
     let loader = new THREE.STLLoader();
