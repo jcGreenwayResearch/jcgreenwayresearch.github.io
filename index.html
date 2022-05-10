@@ -8,26 +8,48 @@
     <title>可视化作业</title>
     <link rel="stylesheet" type="text/css" href="main.css">
     <script src="three.js"></script>
-    <script src="OrbitControls.js"></script>
     <script src="STLLoader.js"></script>
 </head>
 
 <body>
 <div class="none-canvas" id="intro-screen">
-    <div class="window">
-        <!--引入-->
-        <div id="intro">
-            <h1 class="Header">可视化作业</h1>
-        </div>
-        <!--开始按钮-->
-        <div>
-            <button class="close-button" onclick="turnoff('intro-screen')">开始</button>
-        </div>
+    <!--引入-->
+    <div id="intro">
+        <h1 class="Header">可视化作业</h1>
+    </div>
+    <!--开始按钮-->
+    <div>
+        <button id="start-button" onclick="start()">开始<span class="shortcut">↩</span></button>
+    </div>
+</div>
+<div class="none-canvas" id="over-canvas">
+    <div class="tip" id="key-control-tips">
+            <span class="keyboard-button" id="arrow-left-tip">
+                后退<span class="shortcut">←</span>
+            </span>
+        <span class="keyboard-button">
+            <span id="arrow-up-down-tip">鸟瞰</span>
+            <span id="arrow-up-down-shortcut">↑</span>
+        </span>
+        <span class="keyboard-button" id="arrow-right-tip">
+                继续<span class="shortcut">→</span>
+            </span>
+    </div>
+</div>
+<!--文字内容-->
+<div class="none-canvas" id="under-canvas">
+    <div class="passage" id="passage1">
+        <div class="passage-title">文章</div>
+        <div class="passage-content">文章（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</div>
+        <div class="passage-content">文章（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</div>
     </div>
 </div>
 <!-- 将在这个div输出画布内容 -->
-    <div id="canvas-content"></div>
+<div id="canvas-content"></div>
+
+<!--JavaScript脚本-->
 <script src="canvas.js"></script>
 <script src="actions.js"></script>
+
 </body>
 </html>
