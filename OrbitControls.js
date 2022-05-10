@@ -35,9 +35,6 @@
             this.minDistance = 0;
             this.maxDistance = Infinity; // How far you can zoom in and out ( OrthographicCamera only )
 
-            this.minZoom = 0;
-            this.maxZoom = Infinity; // How far you can orbit vertically, upper and lower limits.
-            // Range is 0 to Math.PI radians.
 
             this.minPolarAngle = 0; // radians
 
@@ -52,12 +49,10 @@
             // If damping is enabled, you must call controls.update() in your animation loop
 
             this.enableDamping = false;
-            this.dampingFactor = 0.05; // This option actually enables dollying in and out; left as "zoom" for backwards compatibility.
+            this.dampingFactor = 0.0005; // This option actually enables dollying in and out; left as "zoom" for backwards compatibility.
             // Set to false to disable zooming
 
             this.enableZoom = true;
-            this.zoomSpeed = 0.3; // Set to false to disable rotating
-
             this.enableRotate = true;
             this.rotateSpeed = 1.0; // Set to false to disable panning
 
@@ -82,7 +77,6 @@
 
             this.mouseButtons = {
                 LEFT: THREE.MOUSE.ROTATE,
-                MIDDLE: THREE.MOUSE.DOLLY,
                 RIGHT: THREE.MOUSE.PAN
             }; // Touch fingers
 
@@ -93,7 +87,6 @@
 
             this.target0 = this.target.clone();
             this.position0 = this.object.position.clone();
-            this.zoom0 = this.object.zoom; // the target DOM element for key events
 
             this._domElementKeyEvents = null; //
             // public methods
@@ -263,7 +256,6 @@
                 scope.domElement.removeEventListener('contextmenu', onContextMenu);
                 scope.domElement.removeEventListener('pointerdown', onPointerDown);
                 scope.domElement.removeEventListener('pointercancel', onPointerCancel);
-                scope.domElement.removeEventListener('wheel', onMouseWheel);
                 scope.domElement.removeEventListener('pointermove', onPointerMove);
                 scope.domElement.removeEventListener('pointerup', onPointerUp);
 
@@ -304,8 +296,6 @@
             const panEnd = new THREE.Vector2();
             const panDelta = new THREE.Vector2();
             const dollyStart = new THREE.Vector2();
-            const dollyEnd = new THREE.Vector2();
-            const dollyDelta = new THREE.Vector2();
             const pointers = [];
             const pointerPositions = {};
 
@@ -315,11 +305,6 @@
 
             }
 
-            function getZoomScale() {
-
-                return Math.pow(0.95, scope.zoomSpeed);
-
-            }
 
             function rotateLeft(angle) {
 
@@ -408,49 +393,7 @@
 
             }();
 
-            function dollyOut(dollyScale) {
 
-                if (scope.object.isPerspectiveCamera) {
-
-                    scale /= dollyScale;
-
-                } else if (scope.object.isOrthographicCamera) {
-
-                    scope.object.zoom = Math.max(scope.minZoom, Math.min(scope.maxZoom, scope.object.zoom * dollyScale));
-                    scope.object.updateProjectionMatrix();
-                    zoomChanged = true;
-
-                } else {
-
-                    console.warn('WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.');
-                    scope.enableZoom = false;
-
-                }
-
-            }
-
-            function dollyIn(dollyScale) {
-
-                if (scope.object.isPerspectiveCamera) {
-
-                    scale *= dollyScale;
-
-                } else if (scope.object.isOrthographicCamera) {
-
-                    scope.object.zoom = Math.max(scope.minZoom, Math.min(scope.maxZoom, scope.object.zoom / dollyScale));
-                    scope.object.updateProjectionMatrix();
-                    zoomChanged = true;
-
-                } else {
-
-                    console.warn('WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.');
-                    scope.enableZoom = false;
-
-                }
-
-            } //
-            // event callbacks - update the object state
-            //
 
 
             function handleMouseDownRotate(event) {
@@ -484,25 +427,6 @@
 
             }
 
-            function handleMouseMoveDolly(event) {
-
-                dollyEnd.set(event.clientX, event.clientY);
-                dollyDelta.subVectors(dollyEnd, dollyStart);
-
-                if (dollyDelta.y > 0) {
-
-                    dollyOut(getZoomScale());
-
-                } else if (dollyDelta.y < 0) {
-
-                    dollyIn(getZoomScale());
-
-                }
-
-                dollyStart.copy(dollyEnd);
-                scope.update();
-
-            }
 
             function handleMouseMovePan(event) {
 
@@ -514,21 +438,7 @@
 
             }
 
-            function handleMouseWheel(event) {
 
-                if (event.deltaY < 0) {
-
-                    dollyIn(getZoomScale());
-
-                } else if (event.deltaY > 0) {
-
-                    dollyOut(getZoomScale());
-
-                }
-
-                scope.update();
-
-            }
 
             function handleKeyDown(event) {
 
@@ -561,7 +471,7 @@
                 if (needsUpdate) {
 
                     // prevent the browser from scrolling on cursor keys
-                    event.preventDefault();
+                    // event.preventDefault();
                     scope.update();
 
                 }
@@ -668,34 +578,8 @@
 
             }
 
-            function handleTouchMoveDolly(event) {
 
-                const position = getSecondPointerPosition(event);
-                const dx = event.pageX - position.x;
-                const dy = event.pageY - position.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                dollyEnd.set(0, distance);
-                dollyDelta.set(0, Math.pow(dollyEnd.y / dollyStart.y, scope.zoomSpeed));
-                dollyOut(dollyDelta.y);
-                dollyStart.copy(dollyEnd);
 
-            }
-
-            function handleTouchMoveDollyPan(event) {
-
-                if (scope.enableZoom) handleTouchMoveDolly(event);
-                if (scope.enablePan) handleTouchMovePan(event);
-
-            }
-
-            function handleTouchMoveDollyRotate(event) {
-
-                if (scope.enableZoom) handleTouchMoveDolly(event);
-                if (scope.enableRotate) handleTouchMoveRotate(event);
-
-            } //
-            // event handlers - FSM: listen for events and reset state
-            //
 
 
             function onPointerDown(event) {
@@ -853,10 +737,7 @@
                         handleMouseMoveRotate(event);
                         break;
 
-                    case STATE.DOLLY:
-                        if (scope.enableZoom === false) return;
-                        handleMouseMoveDolly(event);
-                        break;
+
 
                     case STATE.PAN:
                         if (scope.enablePan === false) return;
@@ -867,15 +748,7 @@
 
             }
 
-            function onMouseWheel(event) {
 
-                if (scope.enabled === false || scope.enableZoom === false || state !== STATE.NONE) return;
-                event.preventDefault();
-                scope.dispatchEvent(_startEvent);
-                handleMouseWheel(event);
-                scope.dispatchEvent(_endEvent);
-
-            }
 
             function onKeyDown(event) {
 
@@ -965,17 +838,9 @@
                         scope.update();
                         break;
 
-                    case STATE.TOUCH_DOLLY_PAN:
-                        if (scope.enableZoom === false && scope.enablePan === false) return;
-                        handleTouchMoveDollyPan(event);
-                        scope.update();
-                        break;
 
-                    case STATE.TOUCH_DOLLY_ROTATE:
-                        if (scope.enableZoom === false && scope.enableRotate === false) return;
-                        handleTouchMoveDollyRotate(event);
-                        scope.update();
-                        break;
+
+
 
                     default:
                         state = STATE.NONE;
@@ -1040,9 +905,6 @@
             scope.domElement.addEventListener('contextmenu', onContextMenu);
             scope.domElement.addEventListener('pointerdown', onPointerDown);
             scope.domElement.addEventListener('pointercancel', onPointerCancel);
-            scope.domElement.addEventListener('wheel', onMouseWheel, {
-                passive: false
-            }); // force an update at start
 
             this.update();
 
