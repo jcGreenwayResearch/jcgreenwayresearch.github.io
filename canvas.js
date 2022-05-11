@@ -18,8 +18,24 @@ function init() {
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap; // options are THREE.BasicShadowMap | THREE.PCFShadowMap | THREE.PCFSoftShadowMap
 
+    // 加载loaderManager
+    const manager = new THREE.LoadingManager();
+    manager.onStart = function (url, itemsLoaded, itemsTotal) {
+        console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+    };
+    manager.onLoad = function () {
+        console.log('Loading complete!');
+    };
+
+    manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+        console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+    };
+    manager.onError = function (url) {
+        console.log('There was an error loading ' + url);
+    };
+
     // 加载loader
-    let loader = new THREE.STLLoader();
+    let loader = new THREE.STLLoader(manager);
     // 导入树干
     loader.load(
         'trunks.stl',
@@ -240,6 +256,24 @@ function init() {
 
 
         function moveX(object, distance) {
+            // 背后文字透明度动画
+            if (originalPosition === 0) {
+                document.getElementById("passage1").style.color = "rgba(255, 255, 255, 0.3)";
+                document.getElementById("passage2").style.color = "rgba(255, 255, 255, 1)";
+            }
+            if (originalPosition === -15) {
+                if (distance > 0) {
+                    document.getElementById("passage2").style.color = "rgba(255, 255, 255, 0.3)";
+                    document.getElementById("passage1").style.color = "rgba(255, 255, 255, 1)";
+                } else {
+                    document.getElementById("passage2").style.color = "rgba(255, 255, 255, 0.3)";
+                    document.getElementById("passage3").style.color = "rgba(255, 255, 255, 1)";
+                }
+            }
+            if (originalPosition === -30) {
+                document.getElementById("passage3").style.color = "rgba(255, 255, 255, 0.3)";
+                document.getElementById("passage2").style.color = "rgba(255, 255, 255, 1)";
+            }
             let movedDistance = 0;  // 初始化移动距离
 
             window.requestAnimationFrame(moveXAction);
