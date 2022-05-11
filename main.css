@@ -164,6 +164,8 @@ button:hover {
     color: rgba(255, 255, 255, 0.88);
     text-align: center;
     top: 38em;
+    /*transition: visibility 1000ms ease;*/
+    visibility: hidden;
 }
 
 .keyboard-tip {
@@ -175,10 +177,6 @@ button:hover {
     position: absolute;
     padding-left: 0.5em;
     color: rgba(255, 255, 255, 0.6);
-}
-
-#over-canvas {
-    visibility: hidden;
 }
 
 .tip {
@@ -244,9 +242,11 @@ button:hover {
 }
 
 .passage {
-    padding: 8.5em 20em;
+    position: absolute;
+    padding: 8.5em 30em;
     text-align: left;
     vertical-align: top;
+    transition: color 1500ms ease;
 }
 
 .passage-title {
@@ -254,4 +254,14 @@ button:hover {
     font-size: xx-large;
     font-weight: bolder;
     line-height: 2.2em;
+}
+
+#passage2 {
+    color: rgba(255, 255, 255, 0.3);
+    transform: translate(40em) !important;
+}
+
+#passage3 {
+    color: rgba(255, 255, 255, 0.3);
+    transform: translate(80em);
 }
