@@ -8,7 +8,8 @@ window.addEventListener("keypress", function (event) {
 
 function start() {
     document.getElementById("intro-screen").style.visibility = "hidden";
+    document.getElementById("start-button").style.visibility = "hidden";
     document.getElementById("over-canvas").style.visibility = "visible";
-    document.getElementById("under-canvas").style.visibility = "visible"
+    document.getElementById("under-canvas").style.visibility = "visible";
     introScreen = false;
 }

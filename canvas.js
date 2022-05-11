@@ -20,18 +20,14 @@ function init() {
 
     // 加载loaderManager
     const manager = new THREE.LoadingManager();
-    manager.onStart = function (url, itemsLoaded, itemsTotal) {
-        console.log('Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
-    };
     manager.onLoad = function () {
-        console.log('Loading complete!');
-    };
-
-    manager.onProgress = function (url, itemsLoaded, itemsTotal) {
-        console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+        document.getElementById("start-button").style.visibility = "visible";
+        document.getElementById("loading-animation").style.visibility = "hidden";
     };
     manager.onError = function (url) {
-        console.log('There was an error loading ' + url);
+        document.getElementById("start-button").style.visibility = "visible";
+        document.getElementById("start-button").textContent = "有错误 仍然开始";
+        document.getElementById("loading-animation").style.visibility = "hidden";
     };
 
     // 加载loader
