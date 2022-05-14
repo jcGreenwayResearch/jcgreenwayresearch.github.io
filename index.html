@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>可视化作业</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <script src="three.js"></script>
-    <script src="STLLoader.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <script src="assets/js/three.js"></script>
+    <script src="assets/js/STLLoader.js"></script>
 </head>
 
 <body>
@@ -21,25 +21,26 @@
     <div>
         <button id="start-button" onclick="start()">开始<span class="shortcut">↩</span></button>
     </div>
-    <div class="sk-folding-cube" id="loading-animation">
-        <div class="sk-cube1 sk-cube"></div>
-        <div class="sk-cube2 sk-cube"></div>
-        <div class="sk-cube4 sk-cube"></div>
-        <div class="sk-cube3 sk-cube"></div>
+    <div id="loading-animation">
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
     </div>
 </div>
 <div class="none-canvas" id="over-canvas">
-    <div class="tip" id="key-control-tips">
-            <span class="keyboard-button" id="arrow-left-tip">
-                后退<span class="shortcut">←</span>
-            </span>
-        <span class="keyboard-button">
-            <span id="arrow-up-down-tip">鸟瞰</span>
-            <span id="arrow-up-down-shortcut">↑</span>
-        </span>
-        <span class="keyboard-button" id="arrow-right-tip">
-                继续<span class="shortcut">→</span>
-            </span>
+    <div>
+        <button class="keyboard-button" id="arrow-left">
+            后退<span class="shortcut">←</span>
+        </button>
+        <button class="keyboard-button" id="arrow-up-down">
+            <span id="arrow-up-down-tip">　鸟瞰　</span><span class="shortcut" id="arrow-up-down-shortcut">↑</span>
+        </button>
+        <button class="keyboard-button" id="arrow-right">
+            继续<span class="shortcut">→</span>
+        </button>
     </div>
 </div>
 <!--文字内容-->
@@ -70,8 +71,8 @@
 <div id="canvas-content"></div>
 
 <!--JavaScript脚本-->
-<script src="canvas.js"></script>
-<script src="actions.js"></script>
+<script src="assets/js/canvas.js"></script>
+<script src="assets/js/actions.js"></script>
 
 </body>
 </html>
