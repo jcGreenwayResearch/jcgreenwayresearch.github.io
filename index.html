@@ -12,67 +12,66 @@
 </head>
 
 <body>
-<div class="none-canvas" id="intro-screen">
-    <!--引入-->
-    <div id="intro">
-        <h1 class="Header">可视化作业</h1>
-    </div>
-    <!--开始按钮-->
-    <div>
-        <button id="start-button" onclick="start()">开始<span class="shortcut">↩</span></button>
-    </div>
-    <div id="loading-animation">
-        <div class="sk-folding-cube">
-            <div class="sk-cube1 sk-cube"></div>
-            <div class="sk-cube2 sk-cube"></div>
-            <div class="sk-cube4 sk-cube"></div>
-            <div class="sk-cube3 sk-cube"></div>
+    <div class="none-canvas" id="intro-screen">
+        <!--引入-->
+        <div id="intro">
+            <h1 class="Header">成都锦城绿道研究可视化项目</h1>
+        </div>
+        <!--开始按钮-->
+        <div>
+            <button id="start-button" onclick="start()">开始<span class="shortcut">↩</span></button>
+        </div>
+        <div id="loading-animation">
+            <div class="sk-folding-cube">
+                <div class="sk-cube1 sk-cube"></div>
+                <div class="sk-cube2 sk-cube"></div>
+                <div class="sk-cube4 sk-cube"></div>
+                <div class="sk-cube3 sk-cube"></div>
+            </div>
         </div>
     </div>
-</div>
-<div class="none-canvas" id="over-canvas">
-    <div>
-        <button class="keyboard-button" id="arrow-left">
-            后退<span class="shortcut">←</span>
-        </button>
-        <button class="keyboard-button" id="arrow-up-down">
-            <span id="arrow-up-down-tip">　鸟瞰　</span><span class="shortcut" id="arrow-up-down-shortcut">↑</span>
-        </button>
-        <button class="keyboard-button" id="arrow-right">
-            继续<span class="shortcut">→</span>
-        </button>
+    <div class="none-canvas" id="over-canvas">
+        <div>
+            <button class="keyboard-button" id="arrow-left">
+                后退<span class="shortcut">←</span>
+            </button>
+            <button class="keyboard-button" id="arrow-up-down">
+                <span id="arrow-up-down-tip">　鸟瞰　</span><span class="shortcut" id="arrow-up-down-shortcut">↑</span>
+            </button>
+            <button class="keyboard-button" id="arrow-right">
+                继续<span class="shortcut">→</span>
+            </button>
+        </div>
     </div>
-</div>
-<!--文字内容-->
-<div class="none-canvas" id="under-canvas">
-    <section class="passage" id="passage1">
-        <p class="passage-title">文章</p>
-        <p class="passage-content">
-            文章（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-        <p class="passage-content">
-            文章（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-    </section>
-    <section class="passage" id="passage2">
-        <p class="passage-title">文章2</p>
-        <p class="passage-content">
-            文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-        <p class="passage-content">
-            文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-    </section>
-    <section class="passage" id="passage3">
-        <p class="passage-title">文章2</p>
-        <p class="passage-content">
-            文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-        <p class="passage-content">
-            文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-    </section>
-</div>
-<!-- 将在这个div输出画布内容 -->
-<div id="canvas-content"></div>
+    <!--文字内容-->
+    <div class="none-canvas" id="under-canvas">
+        <section class="passage" id="passage1">
+            <p class="passage-title">文章</p>
+            <p class="passage-content">
+                文章（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
+            <p class="passage-content">
+                文章（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
+        </section>
+        <section class="passage" id="passage2">
+            <p class="passage-title">文章2</p>
+            <p class="passage-content">
+                文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
+            <p class="passage-content">
+                文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
+        </section>
+        <section class="passage" id="passage3">
+            <p class="passage-title">文章2</p>
+            <p class="passage-content">
+                文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
+            <p class="passage-content">
+                文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
+        </section>
+    </div>
+    <!-- 将在这个div输出画布内容 -->
+    <div id="canvas-content"></div>
 
-<!--JavaScript脚本-->
-<script src="assets/js/canvas.js"></script>
-<script src="assets/js/actions.js"></script>
-
+    <!--JavaScript脚本-->
+    <script src="assets/js/canvas.js"></script>
+    <script src="assets/js/actions.js"></script>
 </body>
 </html>
