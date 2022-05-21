@@ -5,73 +5,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>可视化作业</title>
+    <title>成都锦城绿道研究可视化项目</title>
+    <link rel="icon" href="./img/icon.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <script src="assets/js/three.js"></script>
     <script src="assets/js/STLLoader.js"></script>
 </head>
 
 <body>
-    <div class="none-canvas" id="intro-screen">
-        <!--引入-->
-        <div id="intro">
-            <h1 class="Header">成都锦城绿道研究可视化项目</h1>
-        </div>
-        <!--开始按钮-->
-        <div>
-            <button id="start-button" onclick="start()">开始<span class="shortcut">↩</span></button>
-        </div>
-        <div id="loading-animation">
-            <div class="sk-folding-cube">
-                <div class="sk-cube1 sk-cube"></div>
-                <div class="sk-cube2 sk-cube"></div>
-                <div class="sk-cube4 sk-cube"></div>
-                <div class="sk-cube3 sk-cube"></div>
-            </div>
+<div class="none-canvas" id="intro-screen">
+    <!--引入-->
+    <div id="intro">
+        <h1 class="Header">成都锦城绿道研究可视化项目</h1>
+    </div>
+    <!--开始按钮-->
+    <div>
+        <button id="start-button" onclick="start()">开始<span class="shortcut">↩</span></button>
+    </div>
+    <div id="loading-animation">
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
         </div>
     </div>
-    <div class="none-canvas" id="over-canvas">
-        <div>
-            <button class="keyboard-button" id="arrow-left">
-                后退<span class="shortcut">←</span>
-            </button>
-            <button class="keyboard-button" id="arrow-up-down">
-                <span id="arrow-up-down-tip">　鸟瞰　</span><span class="shortcut" id="arrow-up-down-shortcut">↑</span>
-            </button>
-            <button class="keyboard-button" id="arrow-right">
-                继续<span class="shortcut">→</span>
-            </button>
-        </div>
+</div>
+<div class="none-canvas" id="over-canvas">
+    <div>
+        <button class="keyboard-button" id="arrow-left">
+            后退<span class="shortcut">←</span>
+        </button>
+        <button class="keyboard-button" id="arrow-up-down">
+            <span id="arrow-up-down-tip">详细信息</span><span class="shortcut" id="arrow-up-down-shortcut">↑</span>
+        </button>
+        <button class="keyboard-button" id="arrow-right">
+            继续<span class="shortcut">→</span>
+        </button>
     </div>
-    <!--文字内容-->
-    <div class="none-canvas" id="under-canvas">
-        <section class="passage" id="passage1">
-            <p class="passage-title">文章</p>
-            <p class="passage-content">
-                文章（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-            <p class="passage-content">
-                文章（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-        </section>
-        <section class="passage" id="passage2">
-            <p class="passage-title">文章2</p>
-            <p class="passage-content">
-                文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-            <p class="passage-content">
-                文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-        </section>
-        <section class="passage" id="passage3">
-            <p class="passage-title">文章2</p>
-            <p class="passage-content">
-                文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-            <p class="passage-content">
-                文章2（1984年6月26日－），满族，陕西西安人，中国男演员、导演。2006年毕业于中央戏剧学院表演系。曾获大众电影百花奖最佳男演员，金鸡奖最佳导演处女作奖，金鹰奖最具人气男演员等奖项。2018年文章入选《中国电视剧60年大系·人物卷》。</p>
-        </section>
-    </div>
-    <!-- 将在这个div输出画布内容 -->
-    <div id="canvas-content"></div>
+</div>
+<!--文字内容-->
+<div class="none-canvas" id="passages">
+    <section class="passage" id="passage1">
+        <p class="passage-content">
+            众所周知，在成都，一到周末尤其是出了太阳的周末，各大公园就会被成都人民迅速占领，汇集老中青少四代人。但由于城市公园之间距离较远，一般来讲，市民们去了其中一个公园之后，大概率就只能在公园里面“打转”——直到成都绿道的出现。</p>
+        <p class="passage-content">成都天府绿道以“一轴、二山、三环、七带”的总体布局，区域级、城区级、社区级的三级绿道体系，织就全球规划设计最长的16930公里绿道系统。</p>
+        <p class="passage-content">
+            上文提到的“三环”从内到外分别是熊猫绿道（沿三环路）、锦城绿道（沿绕城高速）、田园绿道（沿第二绕城高速）。其中的锦城绿道，就是串联起成都桂溪山生态公园、青龙湖公园、锦城湖、三圣乡等121个特色生态公园，全程约100km的，国内唯一百公里级的绕城绿道。</p>
+    </section>
+    <section class="passage" id="passage2">
+        <p class="passage-content">
+            锦城绿道现在已经全线贯通，并且改名为了“环城生态公园”，其定位是建成开放式、多功能的环状生态公园，展现天府之国的绮丽风貌，体现世界水准的天府绿道。</p>
+        <p class="passage-content">今天我们将以锦城绿道为入口，带大家走进别具一格的成都天府绿道。</p>
+        <p class="passage-content">
+            成都绿道的整体规划布局涵盖了整个成都市，所以其“便民利民”的作用显而易见，那以锦城绿道为例，我们来看看部分成都街道（以街道办事处为基准）到锦城绿道不同景观的大致路程、所需时间：</p>
+    </section>
+    <section class="passage" id="passage3">
+        <p class="passage-content">
+            树越大，此处的街道办事处与锦城绿道的最短距离越短</p>
+    </section>
+    <section class="passage" id="passage4">
+        <p class="passage-content">
+            从以上数据可以看出，锦城绿道景观的分布较为平均，同时，其布局可以极大地方便不同区域市民的日常出行，但通过调研，我们发现很多市民其实并未意识到自己平时会使用绿道，因为作为一项覆盖整个成都片区的规划建设，绿道不会只是一个城市景观这么简单，让我们现在接着梳理一下绿道究竟有哪些功能。
+        </p>
+        <p class="passage-content">生态保障、慢行交通、休闲旅游、城乡融合、文化创意、体育运动、农业景观、应急避难
+        </p>
+    </section>
+    <section class="passage" id="passage5">
+        <p class="passage-content">根据问卷结果显示，城市绿道慢行交通、休闲旅游的功能最为突出。
+        </p>
+    </section>
+    <section class="passage" id="passage6">
+        <p class="passage-content">
+            诚然，成都绿道于市民们而言极具功能性，但绿道不仅只是与成都市民拥有关联，随着其影响力不断扩大，必然会吸引越来越多外来游客的目光，成为成都市一张崭新的名片，也为成都市的发展带来做出一定贡献。
+        </p>
+        <p class="passage-content">
+            首先最直观的贡献便是成都绿道的经济价值。以锦城绿道的锦城湖公园一段为例，自从绿道投入使用之后，带火了许多行业，比如卖车、租车、修车、骑行装备、餐饮零售，绿道沿途卖水卖冰粉凉面的小贩都多了好几倍。此外，各段绿道沿线的景观设计极具成都特色，比如熊猫绿道以“熊猫”为主题，沿途设置了各式各样的熊猫模型，融入大量熊猫元素，这些都是对外地游客的一种吸引力，吸引其来到成都旅游，促进成都的旅游业发展。
+        </p>
+        <p class="passage-content">
+            偌大的绿道不能空有一个外表，还需要文化底蕴的加持。就像前文提到的熊猫绿道，在设计时融入大熊猫的元素，使其具有独特性的同时又联系了成都文化。无独有偶，非遗博览园附近的非遗星河绿道，更是将传统文化与现代设计巧妙结合。非遗星河绿道全长包括天府二级绿道1800米，三级绿道3300米，它以“星+河”的理念，将文化沉淀和历史记忆融合在一起，其两侧以皮影、漆器、竹编、蹴鞠等非遗元素，规划出皮影互动专区、儿童游乐专区、休闲栈道区和多元互动区等景观节点，为市民提供了一个充分展示非遗元素的慢活空间。
+        </p>
+        <p class="passage-content">
+            论说绿道的价值，我们追根溯源，绝离不开“生态”二字。成都绿道是在相应党中央“绿水青山才是金山银山”的号召下修建的。因此，成都统筹实施“绿道+生态涵养”，厚植青山绿水的生态价值，推动绿道串联生态区55个、绿带155个、公园139个、小游园323个、微绿地380个，增加开敞空间752万平方米，交织形成了完整的城市生态布局。
+        </p>
+        <p class="passage-content">
+            在当下乃至未来，“生态价值”并不局限于“保护环境”的意味，其更重要的意义在于推动生态价值的转化。如今，依托成都绿道的建设，成都市以“绿道+”模式推动“绿水青山”变为“金山银山”，践行了“绿道+生态涵养”、“绿道+场景营造”、“绿道+公共服务、“绿道+制度创新”的发展模式，我们可以相信，以绿道为例的生态产品的价值将会逐步实现。 </p>
+    </section>
+</div>
+<!-- 将在这个div输出画布内容 -->
+<div id="canvas-content"></div>
 
-    <!--JavaScript脚本-->
-    <script src="assets/js/canvas.js"></script>
-    <script src="assets/js/actions.js"></script>
+<!--JavaScript脚本-->
+<script src="assets/js/canvas.js"></script>
+<script src="assets/js/actions.js"></script>
 </body>
 </html>
